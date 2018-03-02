@@ -1711,7 +1711,7 @@ typedef struct {
     projectionMatrix = matrix_perspective_projection(fov, aspect, near, far);
 
     simd_float3 at = (simd_float3){ 0, 0, 0 };
-    simd_float3 from = (simd_float3){ 3, 3, 3 };
+    simd_float3 from = (simd_float3){ 2, 2, 2 };
     simd_float3 up = (simd_float3){ 0, 1, 0 };
     viewMatrix = matrix_lookat(at, from, up);
 
