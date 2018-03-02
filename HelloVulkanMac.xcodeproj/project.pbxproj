@@ -1,0 +1,877 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8357561C204479D800CE345A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8357561B204479D800CE345A /* Assets.xcassets */; };
+		8357561F204479D800CE345A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8357561D204479D800CE345A /* Main.storyboard */; };
+		835757A4204488AA00CE345A /* libMoltenVK.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8357578320447D4800CE345A /* libMoltenVK.dylib */; };
+		835757A62044891700CE345A /* libMoltenVK.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8357578320447D4800CE345A /* libMoltenVK.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		835757A92044899100CE345A /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835757A82044899100CE345A /* MetalKit.framework */; };
+		835757AD204489C700CE345A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835757AA204489C700CE345A /* Foundation.framework */; };
+		835757AE204489C700CE345A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835757AB204489C700CE345A /* Cocoa.framework */; };
+		835757AF204489C700CE345A /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835757AC204489C700CE345A /* Metal.framework */; };
+		835757B920448CA200CE345A /* cube-frag.spv in Resources */ = {isa = PBXBuildFile; fileRef = 835757B520448C5900CE345A /* cube-frag.spv */; };
+		835757BA20448CA200CE345A /* cube-vert.spv in Resources */ = {isa = PBXBuildFile; fileRef = 835757B620448C5900CE345A /* cube-vert.spv */; };
+		83D07E022048A14800566986 /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D07DFB2044B36A00566986 /* Renderer.m */; };
+		83D07E042049C63F00566986 /* uv_grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D07E032049C63F00566986 /* uv_grid.png */; };
+		83D07E072049C6A800566986 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D07E062049C6A800566986 /* AppDelegate.m */; };
+		83D07E0A2049C77B00566986 /* MathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D07E092049C77B00566986 /* MathUtilities.m */; };
+		83D07E0D2049D64300566986 /* Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D07E0C2049D64300566986 /* Cube.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		835757A52044890B00CE345A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				835757A62044891700CE345A /* libMoltenVK.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		83575612204479D700CE345A /* HelloVulkanMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloVulkanMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8357561B204479D800CE345A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8357561E204479D800CE345A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		83575620204479D800CE345A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83575623204479D800CE345A /* HelloVulkanMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelloVulkanMac.entitlements; sourceTree = "<group>"; };
+		8357570820447D4800CE345A /* spirv-val */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "spirv-val"; sourceTree = "<group>"; };
+		8357570920447D4800CE345A /* spirv-cross */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "spirv-cross"; sourceTree = "<group>"; };
+		8357570A20447D4800CE345A /* spirv-remap */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "spirv-remap"; sourceTree = "<group>"; };
+		8357570B20447D4800CE345A /* spirv-dis */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "spirv-dis"; sourceTree = "<group>"; };
+		8357570C20447D4800CE345A /* glslc */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = glslc; sourceTree = "<group>"; };
+		8357570D20447D4800CE345A /* spirv-opt */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "spirv-opt"; sourceTree = "<group>"; };
+		8357570E20447D4800CE345A /* spirv-stats */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "spirv-stats"; sourceTree = "<group>"; };
+		8357570F20447D4800CE345A /* spirv-cfg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "spirv-cfg"; sourceTree = "<group>"; };
+		8357571020447D4800CE345A /* spirv-lesspipe.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "spirv-lesspipe.sh"; sourceTree = "<group>"; };
+		8357571120447D4800CE345A /* spirv-link */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "spirv-link"; sourceTree = "<group>"; };
+		8357571220447D4800CE345A /* vulkaninfo */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = vulkaninfo; sourceTree = "<group>"; };
+		8357571320447D4800CE345A /* glslangValidator */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = glslangValidator; sourceTree = "<group>"; };
+		8357571420447D4800CE345A /* spirv-as */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "spirv-as"; sourceTree = "<group>"; };
+		8357571720447D4800CE345A /* libspirv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = libspirv.hpp; sourceTree = "<group>"; };
+		8357571820447D4800CE345A /* linker.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = linker.hpp; sourceTree = "<group>"; };
+		8357571920447D4800CE345A /* optimizer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = optimizer.hpp; sourceTree = "<group>"; };
+		8357571A20447D4800CE345A /* libspirv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libspirv.h; sourceTree = "<group>"; };
+		8357571C20447D4800CE345A /* SPVRemapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPVRemapper.h; sourceTree = "<group>"; };
+		8357571D20447D4800CE345A /* SpvBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpvBuilder.h; sourceTree = "<group>"; };
+		8357571E20447D4800CE345A /* GLSL.ext.AMD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSL.ext.AMD.h; sourceTree = "<group>"; };
+		8357571F20447D4800CE345A /* doc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = doc.h; sourceTree = "<group>"; };
+		8357572020447D4800CE345A /* spirv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = spirv.hpp; sourceTree = "<group>"; };
+		8357572120447D4800CE345A /* GLSL.ext.KHR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSL.ext.KHR.h; sourceTree = "<group>"; };
+		8357572220447D4800CE345A /* GLSL.ext.NV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSL.ext.NV.h; sourceTree = "<group>"; };
+		8357572320447D4800CE345A /* spvIR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spvIR.h; sourceTree = "<group>"; };
+		8357572420447D4800CE345A /* bitutils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bitutils.h; sourceTree = "<group>"; };
+		8357572520447D4800CE345A /* disassemble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = disassemble.h; sourceTree = "<group>"; };
+		8357572620447D4800CE345A /* GlslangToSpv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlslangToSpv.h; sourceTree = "<group>"; };
+		8357572720447D4800CE345A /* GLSL.std.450.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSL.std.450.h; sourceTree = "<group>"; };
+		8357572820447D4800CE345A /* hex_float.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hex_float.h; sourceTree = "<group>"; };
+		8357572920447D4800CE345A /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
+		8357572C20447D4800CE345A /* ResourceLimits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResourceLimits.h; sourceTree = "<group>"; };
+		8357572D20447D4800CE345A /* Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
+		8357572E20447D4800CE345A /* intermediate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = intermediate.h; sourceTree = "<group>"; };
+		8357572F20447D4800CE345A /* BaseTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTypes.h; sourceTree = "<group>"; };
+		8357573020447D4800CE345A /* revision.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = revision.h; sourceTree = "<group>"; };
+		8357573120447D4800CE345A /* InitializeGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InitializeGlobals.h; sourceTree = "<group>"; };
+		8357573220447D4800CE345A /* ShHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShHandle.h; sourceTree = "<group>"; };
+		8357573320447D4800CE345A /* arrays.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = arrays.h; sourceTree = "<group>"; };
+		8357573420447D4800CE345A /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		8357573520447D4800CE345A /* ConstantUnion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstantUnion.h; sourceTree = "<group>"; };
+		8357573620447D4800CE345A /* InfoSink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfoSink.h; sourceTree = "<group>"; };
+		8357573720447D4800CE345A /* PoolAlloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoolAlloc.h; sourceTree = "<group>"; };
+		8357573920447D4800CE345A /* parseVersions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = parseVersions.h; sourceTree = "<group>"; };
+		8357573A20447D4800CE345A /* gl_types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gl_types.h; sourceTree = "<group>"; };
+		8357573B20447D4800CE345A /* ScanContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanContext.h; sourceTree = "<group>"; };
+		8357573C20447D4800CE345A /* iomapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iomapper.h; sourceTree = "<group>"; };
+		8357573D20447D4800CE345A /* localintermediate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = localintermediate.h; sourceTree = "<group>"; };
+		8357573E20447D4800CE345A /* RemoveTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemoveTree.h; sourceTree = "<group>"; };
+		8357573F20447D4800CE345A /* propagateNoContraction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = propagateNoContraction.h; sourceTree = "<group>"; };
+		8357574020447D4800CE345A /* Versions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Versions.h; sourceTree = "<group>"; };
+		8357574120447D4800CE345A /* SymbolTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SymbolTable.h; sourceTree = "<group>"; };
+		8357574220447D4800CE345A /* glslang_tab.cpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glslang_tab.cpp.h; sourceTree = "<group>"; };
+		8357574320447D4800CE345A /* LiveTraverser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveTraverser.h; sourceTree = "<group>"; };
+		8357574420447D4800CE345A /* Initialize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Initialize.h; sourceTree = "<group>"; };
+		8357574520447D4800CE345A /* attribute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = attribute.h; sourceTree = "<group>"; };
+		8357574620447D4800CE345A /* ParseHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseHelper.h; sourceTree = "<group>"; };
+		8357574820447D4800CE345A /* PpTokens.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PpTokens.h; sourceTree = "<group>"; };
+		8357574920447D4800CE345A /* PpContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PpContext.h; sourceTree = "<group>"; };
+		8357574A20447D4800CE345A /* reflection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = reflection.h; sourceTree = "<group>"; };
+		8357574B20447D4800CE345A /* Scan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scan.h; sourceTree = "<group>"; };
+		8357574D20447D4800CE345A /* ShaderLang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderLang.h; sourceTree = "<group>"; };
+		8357574F20447D4800CE345A /* shaderc.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shaderc.hpp; sourceTree = "<group>"; };
+		8357575020447D4800CE345A /* shaderc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shaderc.h; sourceTree = "<group>"; };
+		8357575220447D4800CE345A /* vk_layer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_layer.h; sourceTree = "<group>"; };
+		8357575320447D4800CE345A /* vk_icd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_icd.h; sourceTree = "<group>"; };
+		8357575420447D4800CE345A /* vulkan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan.h; sourceTree = "<group>"; };
+		8357575520447D4800CE345A /* vk_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_platform.h; sourceTree = "<group>"; };
+		8357575620447D4800CE345A /* vulkan.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vulkan.hpp; sourceTree = "<group>"; };
+		8357575720447D4800CE345A /* vk_sdk_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_sdk_platform.h; sourceTree = "<group>"; };
+		8357575B20447D4800CE345A /* VkLayer_unique_objects.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = VkLayer_unique_objects.json; sourceTree = "<group>"; };
+		8357575C20447D4800CE345A /* VkLayer_threading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = VkLayer_threading.json; sourceTree = "<group>"; };
+		8357575D20447D4800CE345A /* VkLayer_standard_validation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = VkLayer_standard_validation.json; sourceTree = "<group>"; };
+		8357575E20447D4800CE345A /* VkLayer_core_validation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = VkLayer_core_validation.json; sourceTree = "<group>"; };
+		8357575F20447D4800CE345A /* VkLayer_parameter_validation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = VkLayer_parameter_validation.json; sourceTree = "<group>"; };
+		8357576020447D4800CE345A /* VkLayer_object_tracker.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = VkLayer_object_tracker.json; sourceTree = "<group>"; };
+		8357576220447D4800CE345A /* MoltenVK_icd.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MoltenVK_icd.json; sourceTree = "<group>"; };
+		8357576420447D4800CE345A /* libVkLayer_core_validation.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libVkLayer_core_validation.dylib; sourceTree = "<group>"; };
+		8357576520447D4800CE345A /* libshaderc_shared.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libshaderc_shared.dylib; sourceTree = "<group>"; };
+		8357576720447D4800CE345A /* SPIRV-Tools.pc */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SPIRV-Tools.pc"; sourceTree = "<group>"; };
+		8357576820447D4800CE345A /* libOGLCompiler.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOGLCompiler.a; sourceTree = "<group>"; };
+		8357576920447D4800CE345A /* libVkLayer_utils.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libVkLayer_utils.dylib; sourceTree = "<group>"; };
+		8357576A20447D4800CE345A /* libVkLayer_unique_objects.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libVkLayer_unique_objects.dylib; sourceTree = "<group>"; };
+		8357576B20447D4800CE345A /* libVkLayer_threading.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libVkLayer_threading.dylib; sourceTree = "<group>"; };
+		8357576C20447D4800CE345A /* libvulkan.1.0.69.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libvulkan.1.0.69.dylib; sourceTree = "<group>"; };
+		8357576D20447D4800CE345A /* libVkLayer_object_tracker.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libVkLayer_object_tracker.dylib; sourceTree = "<group>"; };
+		8357576E20447D4800CE345A /* libvulkan.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libvulkan.dylib; sourceTree = "<group>"; };
+		8357576F20447D4800CE345A /* libSPIRV-Tools-link.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libSPIRV-Tools-link.a"; sourceTree = "<group>"; };
+		8357577020447D4800CE345A /* libHLSL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHLSL.a; sourceTree = "<group>"; };
+		8357577120447D4800CE345A /* libSPIRV-Tools.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libSPIRV-Tools.a"; sourceTree = "<group>"; };
+		8357577220447D4800CE345A /* libshaderc_combined.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libshaderc_combined.a; sourceTree = "<group>"; };
+		8357577320447D4800CE345A /* libshaderc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libshaderc.a; sourceTree = "<group>"; };
+		8357577420447D4800CE345A /* libMoltenVK.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libMoltenVK.dylib; sourceTree = "<group>"; };
+		8357577520447D4800CE345A /* libOSDependent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOSDependent.a; sourceTree = "<group>"; };
+		8357577620447D4800CE345A /* libVkLayer_parameter_validation.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libVkLayer_parameter_validation.dylib; sourceTree = "<group>"; };
+		8357577720447D4800CE345A /* libSPIRV-Tools-opt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libSPIRV-Tools-opt.a"; sourceTree = "<group>"; };
+		8357577820447D4800CE345A /* libSPVRemapper.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSPVRemapper.a; sourceTree = "<group>"; };
+		8357577920447D4800CE345A /* libvulkan.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libvulkan.1.dylib; sourceTree = "<group>"; };
+		8357577A20447D4800CE345A /* libspirv-cross.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libspirv-cross.a"; sourceTree = "<group>"; };
+		8357577B20447D4800CE345A /* libSPIRV.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSPIRV.a; sourceTree = "<group>"; };
+		8357577C20447D4800CE345A /* libglslang.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libglslang.a; sourceTree = "<group>"; };
+		8357577E20447D4800CE345A /* vulkan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = vulkan.framework; sourceTree = "<group>"; };
+		8357578220447D4800CE345A /* MoltenVK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MoltenVK.framework; sourceTree = "<group>"; };
+		8357578320447D4800CE345A /* libMoltenVK.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libMoltenVK.dylib; sourceTree = "<group>"; };
+		8357578420447D4800CE345A /* MoltenVK_icd.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MoltenVK_icd.json; sourceTree = "<group>"; };
+		8357578720447D4800CE345A /* mvk_datatypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mvk_datatypes.h; sourceTree = "<group>"; };
+		8357578820447D4800CE345A /* vk_mvk_moltenvk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_mvk_moltenvk.h; sourceTree = "<group>"; };
+		8357578920447D4800CE345A /* mvk_vulkan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mvk_vulkan.h; sourceTree = "<group>"; };
+		8357578B20447D4800CE345A /* vulkan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vulkan.h; sourceTree = "<group>"; };
+		8357578C20447D4800CE345A /* vk_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vk_platform.h; sourceTree = "<group>"; };
+		8357578D20447D4800CE345A /* vulkan.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vulkan.hpp; sourceTree = "<group>"; };
+		8357578F20447D4800CE345A /* MoltenVK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MoltenVK.framework; sourceTree = "<group>"; };
+		8357579020447D4800CE345A /* libMoltenVK.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libMoltenVK.dylib; sourceTree = "<group>"; };
+		8357579120447D4800CE345A /* MoltenVK_icd.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MoltenVK_icd.json; sourceTree = "<group>"; };
+		835757A82044899100CE345A /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		835757AA204489C700CE345A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		835757AB204489C700CE345A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		835757AC204489C700CE345A /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		835757B320448B7100CE345A /* cube.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.frag; sourceTree = "<group>"; };
+		835757B420448B7100CE345A /* cube.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.vert; sourceTree = "<group>"; };
+		835757B520448C5900CE345A /* cube-frag.spv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cube-frag.spv"; sourceTree = "<group>"; };
+		835757B620448C5900CE345A /* cube-vert.spv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cube-vert.spv"; sourceTree = "<group>"; };
+		83D07DFA2044B36A00566986 /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
+		83D07DFB2044B36A00566986 /* Renderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
+		83D07E032049C63F00566986 /* uv_grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uv_grid.png; sourceTree = "<group>"; };
+		83D07E052049C6A800566986 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		83D07E062049C6A800566986 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		83D07E082049C77B00566986 /* MathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathUtilities.h; sourceTree = "<group>"; };
+		83D07E092049C77B00566986 /* MathUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MathUtilities.m; sourceTree = "<group>"; };
+		83D07E0B2049D64300566986 /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		83D07E0C2049D64300566986 /* Cube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cube.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8357560F204479D700CE345A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				835757AD204489C700CE345A /* Foundation.framework in Frameworks */,
+				835757AE204489C700CE345A /* Cocoa.framework in Frameworks */,
+				835757AF204489C700CE345A /* Metal.framework in Frameworks */,
+				835757A92044899100CE345A /* MetalKit.framework in Frameworks */,
+				835757A4204488AA00CE345A /* libMoltenVK.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		83575609204479D700CE345A = {
+			isa = PBXGroup;
+			children = (
+				8357570020447D4800CE345A /* vulkansdk-macos-1.0.69.0 */,
+				83575614204479D700CE345A /* HelloVulkanMac */,
+				83575613204479D700CE345A /* Products */,
+				835757A3204488AA00CE345A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		83575613204479D700CE345A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				83575612204479D700CE345A /* HelloVulkanMac.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		83575614204479D700CE345A /* HelloVulkanMac */ = {
+			isa = PBXGroup;
+			children = (
+				835757B820448C6E00CE345A /* Precompiled */,
+				835757B720448C6100CE345A /* Resources */,
+				83D07E082049C77B00566986 /* MathUtilities.h */,
+				83D07E092049C77B00566986 /* MathUtilities.m */,
+				83D07E0B2049D64300566986 /* Cube.h */,
+				83D07E0C2049D64300566986 /* Cube.m */,
+				83D07DFA2044B36A00566986 /* Renderer.h */,
+				83D07DFB2044B36A00566986 /* Renderer.m */,
+				83D07E052049C6A800566986 /* AppDelegate.h */,
+				83D07E062049C6A800566986 /* AppDelegate.m */,
+				8357561B204479D800CE345A /* Assets.xcassets */,
+				8357561D204479D800CE345A /* Main.storyboard */,
+				83575620204479D800CE345A /* Info.plist */,
+				83575623204479D800CE345A /* HelloVulkanMac.entitlements */,
+			);
+			path = HelloVulkanMac;
+			sourceTree = "<group>";
+		};
+		8357570020447D4800CE345A /* vulkansdk-macos-1.0.69.0 */ = {
+			isa = PBXGroup;
+			children = (
+				8357570620447D4800CE345A /* macOS */,
+				8357578020447D4800CE345A /* MoltenVK */,
+			);
+			path = "vulkansdk-macos-1.0.69.0";
+			sourceTree = "<group>";
+		};
+		8357570620447D4800CE345A /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8357570720447D4800CE345A /* bin */,
+				8357571520447D4800CE345A /* include */,
+				8357575820447D4800CE345A /* etc */,
+				8357576320447D4800CE345A /* lib */,
+				8357577D20447D4800CE345A /* Frameworks */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		8357570720447D4800CE345A /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				8357570820447D4800CE345A /* spirv-val */,
+				8357570920447D4800CE345A /* spirv-cross */,
+				8357570A20447D4800CE345A /* spirv-remap */,
+				8357570B20447D4800CE345A /* spirv-dis */,
+				8357570C20447D4800CE345A /* glslc */,
+				8357570D20447D4800CE345A /* spirv-opt */,
+				8357570E20447D4800CE345A /* spirv-stats */,
+				8357570F20447D4800CE345A /* spirv-cfg */,
+				8357571020447D4800CE345A /* spirv-lesspipe.sh */,
+				8357571120447D4800CE345A /* spirv-link */,
+				8357571220447D4800CE345A /* vulkaninfo */,
+				8357571320447D4800CE345A /* glslangValidator */,
+				8357571420447D4800CE345A /* spirv-as */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		8357571520447D4800CE345A /* include */ = {
+			isa = PBXGroup;
+			children = (
+				8357571620447D4800CE345A /* spirv-tools */,
+				8357571B20447D4800CE345A /* SPIRV */,
+				8357572A20447D4800CE345A /* glslang */,
+				8357574E20447D4800CE345A /* libshaderc */,
+				8357575120447D4800CE345A /* vulkan */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		8357571620447D4800CE345A /* spirv-tools */ = {
+			isa = PBXGroup;
+			children = (
+				8357571720447D4800CE345A /* libspirv.hpp */,
+				8357571820447D4800CE345A /* linker.hpp */,
+				8357571920447D4800CE345A /* optimizer.hpp */,
+				8357571A20447D4800CE345A /* libspirv.h */,
+			);
+			path = "spirv-tools";
+			sourceTree = "<group>";
+		};
+		8357571B20447D4800CE345A /* SPIRV */ = {
+			isa = PBXGroup;
+			children = (
+				8357571C20447D4800CE345A /* SPVRemapper.h */,
+				8357571D20447D4800CE345A /* SpvBuilder.h */,
+				8357571E20447D4800CE345A /* GLSL.ext.AMD.h */,
+				8357571F20447D4800CE345A /* doc.h */,
+				8357572020447D4800CE345A /* spirv.hpp */,
+				8357572120447D4800CE345A /* GLSL.ext.KHR.h */,
+				8357572220447D4800CE345A /* GLSL.ext.NV.h */,
+				8357572320447D4800CE345A /* spvIR.h */,
+				8357572420447D4800CE345A /* bitutils.h */,
+				8357572520447D4800CE345A /* disassemble.h */,
+				8357572620447D4800CE345A /* GlslangToSpv.h */,
+				8357572720447D4800CE345A /* GLSL.std.450.h */,
+				8357572820447D4800CE345A /* hex_float.h */,
+				8357572920447D4800CE345A /* Logger.h */,
+			);
+			path = SPIRV;
+			sourceTree = "<group>";
+		};
+		8357572A20447D4800CE345A /* glslang */ = {
+			isa = PBXGroup;
+			children = (
+				8357572B20447D4800CE345A /* Include */,
+				8357573820447D4800CE345A /* MachineIndependent */,
+				8357574C20447D4800CE345A /* Public */,
+			);
+			path = glslang;
+			sourceTree = "<group>";
+		};
+		8357572B20447D4800CE345A /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				8357572C20447D4800CE345A /* ResourceLimits.h */,
+				8357572D20447D4800CE345A /* Types.h */,
+				8357572E20447D4800CE345A /* intermediate.h */,
+				8357572F20447D4800CE345A /* BaseTypes.h */,
+				8357573020447D4800CE345A /* revision.h */,
+				8357573120447D4800CE345A /* InitializeGlobals.h */,
+				8357573220447D4800CE345A /* ShHandle.h */,
+				8357573320447D4800CE345A /* arrays.h */,
+				8357573420447D4800CE345A /* Common.h */,
+				8357573520447D4800CE345A /* ConstantUnion.h */,
+				8357573620447D4800CE345A /* InfoSink.h */,
+				8357573720447D4800CE345A /* PoolAlloc.h */,
+			);
+			path = Include;
+			sourceTree = "<group>";
+		};
+		8357573820447D4800CE345A /* MachineIndependent */ = {
+			isa = PBXGroup;
+			children = (
+				8357573920447D4800CE345A /* parseVersions.h */,
+				8357573A20447D4800CE345A /* gl_types.h */,
+				8357573B20447D4800CE345A /* ScanContext.h */,
+				8357573C20447D4800CE345A /* iomapper.h */,
+				8357573D20447D4800CE345A /* localintermediate.h */,
+				8357573E20447D4800CE345A /* RemoveTree.h */,
+				8357573F20447D4800CE345A /* propagateNoContraction.h */,
+				8357574020447D4800CE345A /* Versions.h */,
+				8357574120447D4800CE345A /* SymbolTable.h */,
+				8357574220447D4800CE345A /* glslang_tab.cpp.h */,
+				8357574320447D4800CE345A /* LiveTraverser.h */,
+				8357574420447D4800CE345A /* Initialize.h */,
+				8357574520447D4800CE345A /* attribute.h */,
+				8357574620447D4800CE345A /* ParseHelper.h */,
+				8357574720447D4800CE345A /* preprocessor */,
+				8357574A20447D4800CE345A /* reflection.h */,
+				8357574B20447D4800CE345A /* Scan.h */,
+			);
+			path = MachineIndependent;
+			sourceTree = "<group>";
+		};
+		8357574720447D4800CE345A /* preprocessor */ = {
+			isa = PBXGroup;
+			children = (
+				8357574820447D4800CE345A /* PpTokens.h */,
+				8357574920447D4800CE345A /* PpContext.h */,
+			);
+			path = preprocessor;
+			sourceTree = "<group>";
+		};
+		8357574C20447D4800CE345A /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				8357574D20447D4800CE345A /* ShaderLang.h */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		8357574E20447D4800CE345A /* libshaderc */ = {
+			isa = PBXGroup;
+			children = (
+				8357574F20447D4800CE345A /* shaderc.hpp */,
+				8357575020447D4800CE345A /* shaderc.h */,
+			);
+			path = libshaderc;
+			sourceTree = "<group>";
+		};
+		8357575120447D4800CE345A /* vulkan */ = {
+			isa = PBXGroup;
+			children = (
+				8357575220447D4800CE345A /* vk_layer.h */,
+				8357575320447D4800CE345A /* vk_icd.h */,
+				8357575420447D4800CE345A /* vulkan.h */,
+				8357575520447D4800CE345A /* vk_platform.h */,
+				8357575620447D4800CE345A /* vulkan.hpp */,
+				8357575720447D4800CE345A /* vk_sdk_platform.h */,
+			);
+			path = vulkan;
+			sourceTree = "<group>";
+		};
+		8357575820447D4800CE345A /* etc */ = {
+			isa = PBXGroup;
+			children = (
+				8357575920447D4800CE345A /* vulkan */,
+			);
+			path = etc;
+			sourceTree = "<group>";
+		};
+		8357575920447D4800CE345A /* vulkan */ = {
+			isa = PBXGroup;
+			children = (
+				8357575A20447D4800CE345A /* explicit_layers.d */,
+				8357576120447D4800CE345A /* icd.d */,
+			);
+			path = vulkan;
+			sourceTree = "<group>";
+		};
+		8357575A20447D4800CE345A /* explicit_layers.d */ = {
+			isa = PBXGroup;
+			children = (
+				8357575B20447D4800CE345A /* VkLayer_unique_objects.json */,
+				8357575C20447D4800CE345A /* VkLayer_threading.json */,
+				8357575D20447D4800CE345A /* VkLayer_standard_validation.json */,
+				8357575E20447D4800CE345A /* VkLayer_core_validation.json */,
+				8357575F20447D4800CE345A /* VkLayer_parameter_validation.json */,
+				8357576020447D4800CE345A /* VkLayer_object_tracker.json */,
+			);
+			path = explicit_layers.d;
+			sourceTree = "<group>";
+		};
+		8357576120447D4800CE345A /* icd.d */ = {
+			isa = PBXGroup;
+			children = (
+				8357576220447D4800CE345A /* MoltenVK_icd.json */,
+			);
+			path = icd.d;
+			sourceTree = "<group>";
+		};
+		8357576320447D4800CE345A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				8357576420447D4800CE345A /* libVkLayer_core_validation.dylib */,
+				8357576520447D4800CE345A /* libshaderc_shared.dylib */,
+				8357576620447D4800CE345A /* pkgconfig */,
+				8357576820447D4800CE345A /* libOGLCompiler.a */,
+				8357576920447D4800CE345A /* libVkLayer_utils.dylib */,
+				8357576A20447D4800CE345A /* libVkLayer_unique_objects.dylib */,
+				8357576B20447D4800CE345A /* libVkLayer_threading.dylib */,
+				8357576C20447D4800CE345A /* libvulkan.1.0.69.dylib */,
+				8357576D20447D4800CE345A /* libVkLayer_object_tracker.dylib */,
+				8357576E20447D4800CE345A /* libvulkan.dylib */,
+				8357576F20447D4800CE345A /* libSPIRV-Tools-link.a */,
+				8357577020447D4800CE345A /* libHLSL.a */,
+				8357577120447D4800CE345A /* libSPIRV-Tools.a */,
+				8357577220447D4800CE345A /* libshaderc_combined.a */,
+				8357577320447D4800CE345A /* libshaderc.a */,
+				8357577420447D4800CE345A /* libMoltenVK.dylib */,
+				8357577520447D4800CE345A /* libOSDependent.a */,
+				8357577620447D4800CE345A /* libVkLayer_parameter_validation.dylib */,
+				8357577720447D4800CE345A /* libSPIRV-Tools-opt.a */,
+				8357577820447D4800CE345A /* libSPVRemapper.a */,
+				8357577920447D4800CE345A /* libvulkan.1.dylib */,
+				8357577A20447D4800CE345A /* libspirv-cross.a */,
+				8357577B20447D4800CE345A /* libSPIRV.a */,
+				8357577C20447D4800CE345A /* libglslang.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		8357576620447D4800CE345A /* pkgconfig */ = {
+			isa = PBXGroup;
+			children = (
+				8357576720447D4800CE345A /* SPIRV-Tools.pc */,
+			);
+			path = pkgconfig;
+			sourceTree = "<group>";
+		};
+		8357577D20447D4800CE345A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8357577E20447D4800CE345A /* vulkan.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		8357578020447D4800CE345A /* MoltenVK */ = {
+			isa = PBXGroup;
+			children = (
+				8357578120447D4800CE345A /* macOS */,
+				8357578520447D4800CE345A /* include */,
+				8357578E20447D4800CE345A /* iOS */,
+			);
+			path = MoltenVK;
+			sourceTree = "<group>";
+		};
+		8357578120447D4800CE345A /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8357578220447D4800CE345A /* MoltenVK.framework */,
+				8357578320447D4800CE345A /* libMoltenVK.dylib */,
+				8357578420447D4800CE345A /* MoltenVK_icd.json */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		8357578520447D4800CE345A /* include */ = {
+			isa = PBXGroup;
+			children = (
+				8357578620447D4800CE345A /* MoltenVK */,
+				8357578A20447D4800CE345A /* vulkan */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		8357578620447D4800CE345A /* MoltenVK */ = {
+			isa = PBXGroup;
+			children = (
+				8357578720447D4800CE345A /* mvk_datatypes.h */,
+				8357578820447D4800CE345A /* vk_mvk_moltenvk.h */,
+				8357578920447D4800CE345A /* mvk_vulkan.h */,
+			);
+			path = MoltenVK;
+			sourceTree = "<group>";
+		};
+		8357578A20447D4800CE345A /* vulkan */ = {
+			isa = PBXGroup;
+			children = (
+				8357578B20447D4800CE345A /* vulkan.h */,
+				8357578C20447D4800CE345A /* vk_platform.h */,
+				8357578D20447D4800CE345A /* vulkan.hpp */,
+			);
+			path = vulkan;
+			sourceTree = "<group>";
+		};
+		8357578E20447D4800CE345A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8357578F20447D4800CE345A /* MoltenVK.framework */,
+				8357579020447D4800CE345A /* libMoltenVK.dylib */,
+				8357579120447D4800CE345A /* MoltenVK_icd.json */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		835757A3204488AA00CE345A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				835757AB204489C700CE345A /* Cocoa.framework */,
+				835757AA204489C700CE345A /* Foundation.framework */,
+				835757AC204489C700CE345A /* Metal.framework */,
+				835757A82044899100CE345A /* MetalKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		835757B720448C6100CE345A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				83D07E032049C63F00566986 /* uv_grid.png */,
+				835757B320448B7100CE345A /* cube.frag */,
+				835757B420448B7100CE345A /* cube.vert */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		835757B820448C6E00CE345A /* Precompiled */ = {
+			isa = PBXGroup;
+			children = (
+				835757B520448C5900CE345A /* cube-frag.spv */,
+				835757B620448C5900CE345A /* cube-vert.spv */,
+			);
+			path = Precompiled;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		83575611204479D700CE345A /* HelloVulkanMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83575626204479D800CE345A /* Build configuration list for PBXNativeTarget "HelloVulkanMac" */;
+			buildPhases = (
+				8357560E204479D700CE345A /* Sources */,
+				835757B220448B5600CE345A /* ShellScript */,
+				8357560F204479D700CE345A /* Frameworks */,
+				83575610204479D700CE345A /* Resources */,
+				835757A52044890B00CE345A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelloVulkanMac;
+			productName = HelloVulkanMac;
+			productReference = 83575612204479D700CE345A /* HelloVulkanMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8357560A204479D700CE345A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Warren Moore";
+				TargetAttributes = {
+					83575611204479D700CE345A = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = 8357560D204479D700CE345A /* Build configuration list for PBXProject "HelloVulkanMac" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83575609204479D700CE345A;
+			productRefGroup = 83575613204479D700CE345A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				83575611204479D700CE345A /* HelloVulkanMac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		83575610204479D700CE345A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8357561C204479D800CE345A /* Assets.xcassets in Resources */,
+				8357561F204479D800CE345A /* Main.storyboard in Resources */,
+				835757B920448CA200CE345A /* cube-frag.spv in Resources */,
+				835757BA20448CA200CE345A /* cube-vert.spv in Resources */,
+				83D07E042049C63F00566986 /* uv_grid.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		835757B220448B5600CE345A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PROJECT_DIR/vulkansdk-macos-1.0.69.0/macOS/bin/glslangvalidator -V $PROJECT_DIR/HelloVulkanMac/Resources/cube.vert -o $PROJECT_DIR/HelloVulkanMac/Precompiled/cube-vert.spv\n$PROJECT_DIR/vulkansdk-macos-1.0.69.0/macOS/bin/glslangvalidator -V $PROJECT_DIR/HelloVulkanMac/Resources/cube.frag -o $PROJECT_DIR/HelloVulkanMac/Precompiled/cube-frag.spv";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8357560E204479D700CE345A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D07E0D2049D64300566986 /* Cube.m in Sources */,
+				83D07E072049C6A800566986 /* AppDelegate.m in Sources */,
+				83D07E022048A14800566986 /* Renderer.m in Sources */,
+				83D07E0A2049C77B00566986 /* MathUtilities.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8357561D204479D800CE345A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8357561E204479D800CE345A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		83575624204479D800CE345A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		83575625204479D800CE345A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		83575627204479D800CE345A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HelloVulkanMac/HelloVulkanMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = M4KB9BV65V;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/vulkansdk-macos-1.0.69.0/macOS/include";
+				INFOPLIST_FILE = HelloVulkanMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vulkansdk-macos-1.0.69.0/MoltenVK/macOS",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.metalbyexample.HelloVulkanMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		83575628204479D800CE345A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HelloVulkanMac/HelloVulkanMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = M4KB9BV65V;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/vulkansdk-macos-1.0.69.0/macOS/include";
+				INFOPLIST_FILE = HelloVulkanMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vulkansdk-macos-1.0.69.0/MoltenVK/macOS",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.metalbyexample.HelloVulkanMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8357560D204479D700CE345A /* Build configuration list for PBXProject "HelloVulkanMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83575624204479D800CE345A /* Debug */,
+				83575625204479D800CE345A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83575626204479D800CE345A /* Build configuration list for PBXNativeTarget "HelloVulkanMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83575627204479D800CE345A /* Debug */,
+				83575628204479D800CE345A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8357560A204479D700CE345A /* Project object */;
+}
