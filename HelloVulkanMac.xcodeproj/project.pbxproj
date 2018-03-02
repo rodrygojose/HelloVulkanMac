@@ -38,6 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		830AED72204A12D4009C255B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		83575612204479D700CE345A /* HelloVulkanMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloVulkanMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8357561B204479D800CE345A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8357561E204479D800CE345A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 		83575609204479D700CE345A = {
 			isa = PBXGroup;
 			children = (
+				830AED72204A12D4009C255B /* README.md */,
 				8357570020447D4800CE345A /* vulkansdk-macos-1.0.69.0 */,
 				83575614204479D700CE345A /* HelloVulkanMac */,
 				83575613204479D700CE345A /* Products */,
