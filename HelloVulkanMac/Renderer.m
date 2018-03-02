@@ -35,7 +35,7 @@
 typedef struct {
     VkImage image;
     VkCommandBuffer commandBuffer;
-    VkCommandBuffer presentCommandBuffer; // more properly though of as a resource transition buffer; used when present is on a separate queue
+    VkCommandBuffer presentCommandBuffer; // more properly thought of as a resource transition buffer; used when present is on a separate queue
     VkImageView imageView;
     VkBuffer uniformBuffer;
     VkDeviceMemory uniformMemory;
